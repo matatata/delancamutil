@@ -14,7 +14,6 @@ import USBDeviceSwift
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    static let CAMNAME="Delan Cam 1"
     static let delanCamsUsbInfos:[USBMonitorData] = [
         USBMonitorData(vendorId: 0x0120, productId: 0x1234)
         //,add more devices?
@@ -64,18 +63,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.usbConnected), name: .USBDeviceConnected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.usbDisconnected), name: .USBDeviceDisconnected, object: nil)
-
-        
-        let appPath: String = {
-          let path = Bundle.main.bundlePath as NSString
-          var components = path.pathComponents
-          components.removeLast(4)
-          return NSString.path(withComponents: components)
-        }()
-        let appURL = URL(fileURLWithPath: appPath)
-        NSWorkspace.shared.openApplication(at: appURL,
-        configuration: NSWorkspace.OpenConfiguration(),
-        completionHandler: nil)
     }
  
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -85,15 +72,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
     }
-    
-    fileprivate func setControlToMinimumMaxium(name:String,controller:UVCController,max:Bool) {
-        if let x = controller.control(withName: name){
-            print("current " + name  + "=" + x.currentValue().stringValue())
-            x.currentValue().copy(max ? x.maximum(): x.minimum())
-            x.writeFromCurrentValue();
-            print("new " + name  + "="  + x.currentValue().stringValue())
-        }
-    }
 
     
     fileprivate func findDelanCamAndPushSttings(device:USBDevice) {
@@ -102,17 +80,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     
     fileprivate func findDelanCamAndPushSttings(vendorId:UInt16, productId:UInt16) {
-      
-        if let n:UVCController = UVCController.uvcController(withVendorId: vendorId, productId: productId) as? UVCController {
-            print("Device " +  String(format: "0x%X:0x%X",vendorId,productId));
-            n.setIsInterfaceOpen(true);
-            setControlToMinimumMaxium(name: "auto-exposure-mode", controller: n,max:false);
-            setControlToMinimumMaxium(name: "auto-exposure-priority", controller: n,max:true);
-            n.setIsInterfaceOpen(false);
-        }
+        let id=String(format: "0x%X:0x%X",vendorId,productId)
+        util("-V", "\(id)", "-s", "auto-exposure-mode=minimum", "-s" , "auto-exposure-priority=maximum")
     }
 
-    
+   
+
+    @discardableResult
+    func util(_ args: String...) -> Int32 {
+        let task = Process()
+        task.executableURL = Bundle.main.url(forResource: "uvc-util",withExtension: "")
+        task.arguments = args
+        task.launch()
+        task.waitUntilExit()
+        return task.terminationStatus
+    }
     
     // getting connected device data
     @objc func usbConnected(notification: NSNotification) {
@@ -127,13 +109,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DispatchQueue.main.async {
             if let button = self.statusItem.button {
                 button.image = NSImage(systemSymbolName: "poweroutlet.type.d.fill", accessibilityDescription: "1")
+                self.pushSettingsNow.isEnabled = true
+                self.findDelanCamAndPushSttings(device: device)
             }
             
         }
         
-        self.pushSettingsNow.isEnabled = true
         
-        findDelanCamAndPushSttings(device: device)
     }
 
         // getting disconnected device id
@@ -142,10 +124,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if let button = self.statusItem.button {
                 button.image = NSImage(systemSymbolName: "poweroutlet.type.d", accessibilityDescription: "1")
             }
-           
+            self.pushSettingsNow.isEnabled = false
         }
 
-        self.pushSettingsNow.isEnabled = false
+       
     }
     
 

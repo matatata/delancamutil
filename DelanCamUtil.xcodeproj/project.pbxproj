@@ -8,19 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		950F3A482CB48E4C003CB79E /* USBDeviceSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 950F3A472CB48E4C003CB79E /* USBDeviceSwift */; settings = {ATTRIBUTES = (Required, ); }; };
-		950F3A4B2CB49361003CB79E /* libuvclib.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 957D1DEF2CB474F300395276 /* libuvclib.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		957D1E042CB4754100395276 /* libuvclib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 957D1DEF2CB474F300395276 /* libuvclib.dylib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		957D1E052CB480BA00395276 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 957D1DB42CB466DD00395276 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 957D1DEE2CB474F300395276;
-			remoteInfo = uvclib;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		950F3A4A2CB49339003CB79E /* CopyFiles */ = {
@@ -29,7 +17,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				950F3A4B2CB49361003CB79E /* libuvclib.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,19 +24,12 @@
 
 /* Begin PBXFileReference section */
 		957D1DBC2CB466DD00395276 /* DelanCamUtil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DelanCamUtil.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		957D1DCC2CB46AC800395276 /* DelanCamUtil-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DelanCamUtil-Bridging-Header.h"; sourceTree = "<group>"; };
-		957D1DEF2CB474F300395276 /* libuvclib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libuvclib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		957D1DBE2CB466DD00395276 /* DelanCamUtil */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = DelanCamUtil;
-			sourceTree = "<group>";
-		};
-		957D1DF02CB474F300395276 /* uvclib */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = uvclib;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -59,15 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				957D1E042CB4754100395276 /* libuvclib.dylib in Frameworks */,
 				950F3A482CB48E4C003CB79E /* USBDeviceSwift in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		957D1DED2CB474F300395276 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +51,6 @@
 			children = (
 				957D1DBE2CB466DD00395276 /* DelanCamUtil */,
 				957D1DBD2CB466DD00395276 /* Products */,
-				957D1DCC2CB46AC800395276 /* DelanCamUtil-Bridging-Header.h */,
 				957D1DE72CB4739100395276 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -88,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				957D1DBC2CB466DD00395276 /* DelanCamUtil.app */,
-				957D1DEF2CB474F300395276 /* libuvclib.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,22 +66,11 @@
 		957D1DE72CB4739100395276 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				957D1DF02CB474F300395276 /* uvclib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		957D1DEB2CB474F300395276 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		957D1DBB2CB466DD00395276 /* DelanCamUtil */ = {
@@ -126,7 +85,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				957D1E062CB480BA00395276 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				957D1DBE2CB466DD00395276 /* DelanCamUtil */,
@@ -138,28 +96,6 @@
 			productName = DelanCamUtil;
 			productReference = 957D1DBC2CB466DD00395276 /* DelanCamUtil.app */;
 			productType = "com.apple.product-type.application";
-		};
-		957D1DEE2CB474F300395276 /* uvclib */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 957D1DF52CB474F300395276 /* Build configuration list for PBXNativeTarget "uvclib" */;
-			buildPhases = (
-				957D1DEB2CB474F300395276 /* Headers */,
-				957D1DEC2CB474F300395276 /* Sources */,
-				957D1DED2CB474F300395276 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				957D1DF02CB474F300395276 /* uvclib */,
-			);
-			name = uvclib;
-			packageProductDependencies = (
-			);
-			productName = uvclib;
-			productReference = 957D1DEF2CB474F300395276 /* libuvclib.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
 
@@ -174,9 +110,6 @@
 					957D1DBB2CB466DD00395276 = {
 						CreatedOnToolsVersion = 16.0;
 						LastSwiftMigration = 1600;
-					};
-					957D1DEE2CB474F300395276 = {
-						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
@@ -198,7 +131,6 @@
 			projectRoot = "";
 			targets = (
 				957D1DBB2CB466DD00395276 /* DelanCamUtil */,
-				957D1DEE2CB474F300395276 /* uvclib */,
 			);
 		};
 /* End PBXProject section */
@@ -221,22 +153,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		957D1DEC2CB474F300395276 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		957D1E062CB480BA00395276 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 957D1DEE2CB474F300395276 /* uvclib */;
-			targetProxy = 957D1E052CB480BA00395276 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		957D1DC72CB466DE00395276 /* Debug */ = {
@@ -387,7 +304,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.github.matatata.DelanCamUtil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "DelanCamUtil-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -421,40 +338,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.github.matatata.DelanCamUtil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "DelanCamUtil-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		957D1DF62CB474F300395276 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_STYLE = Automatic;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				EXECUTABLE_PREFIX = lib;
-				INSTALL_PATH = "@executable_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		957D1DF72CB474F300395276 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_STYLE = Automatic;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				EXECUTABLE_PREFIX = lib;
-				INSTALL_PATH = "@executable_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -475,15 +360,6 @@
 			buildConfigurations = (
 				957D1DCA2CB466DE00395276 /* Debug */,
 				957D1DCB2CB466DE00395276 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		957D1DF52CB474F300395276 /* Build configuration list for PBXNativeTarget "uvclib" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				957D1DF62CB474F300395276 /* Debug */,
-				957D1DF72CB474F300395276 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
