@@ -106,7 +106,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         
-        DispatchQueue.main.async {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             if let button = self.statusItem.button {
                 button.image = NSImage(systemSymbolName: "poweroutlet.type.d.fill", accessibilityDescription: "1")
                 self.pushSettingsNow.isEnabled = true
